@@ -35,6 +35,7 @@ def translate(text,ls,ts):
 	m=p.search(html)
 	ans=m.group(0).strip(';')
 	return ans 
+	
 #File Parse Module
 def parser(file_path):
 	# Get the summary and text of the review
@@ -72,6 +73,7 @@ def parser(file_path):
 		else:
 			break
 		yield summary+' '+text
+		
 #File Parse Module
 def get_labels(file_path):
 	# Get the corresponding labels of these reviews
@@ -137,6 +139,7 @@ def predict_docs(clf,docs):
 		ans.append(temp_ans)
 		file_ans.write(str(temp_ans) + '\n')
 	return ans
+	
 #Main Entrance
 if __name__=="__main__":
 	file_path_train = 'train.data'
