@@ -17,6 +17,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm
 from sklearn.svm import SVC
 
+#Goolge Translate Module
+#Text is the content you want to translate
+#ls Param means the Text's previous language
+#ts Param means the Text's target language
 def translate(text,ls,ts):
 	#Translate the text from language ls to language ts
 	values={'hl':'zh-CN','ie':'UTF-8','text':text,'langpair':"%s|%s" % (ls,ts)}
@@ -31,7 +35,7 @@ def translate(text,ls,ts):
 	m=p.search(html)
 	ans=m.group(0).strip(';')
 	return ans 
-
+#File Parse Module
 def parser(file_path):
 	# Get the summary and text of the review
 	open_file = open(file_path)
@@ -68,7 +72,7 @@ def parser(file_path):
 		else:
 			break
 		yield summary+' '+text
-
+#File Parse Module
 def get_labels(file_path):
 	# Get the corresponding labels of these reviews
 	open_file = open(file_path)
@@ -133,7 +137,7 @@ def predict_docs(clf,docs):
 		ans.append(temp_ans)
 		file_ans.write(str(temp_ans) + '\n')
 	return ans
-
+#Main Entrance
 if __name__=="__main__":
 	file_path_train = 'train.data'
 	file_path_test = 'test.data'
